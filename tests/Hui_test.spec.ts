@@ -49,5 +49,6 @@ test("Navigate to the user module", async({page})=>{
     await page.locator("//button[normalize-space()='Add New User']").click();
     await page.waitForTimeout(5000)
     await page.locator("//button[@aria-label='Close']").click();
+    console.log("vahith")
 })
 
