@@ -30,6 +30,7 @@ test.beforeEach("Login to the CRM", async({page})=>{
 
      await page.locator("//button[normalize-space()='Continue']").click();
      await page.waitForURL("https://devhui.ptw.com/manager-dashboard");
+     await page.waitForTimeout(2000);
      await expect(page.locator("//h1[normalize-space()='Dashboard']")).toBeVisible();
     
 })
@@ -38,8 +39,8 @@ test("Navigate to project Module", async({page})=>{
 
     await page.locator("(//a[text()='Projects'])[2]").click();
     await page.locator("//button[normalize-space()='+ NEW PROJECT']").click();
-    await page.waitForTimeout(5000);
-    await page.locator("//button[@aria-label='Close']").click();
+    // await page.waitForTimeout(5000);
+    // await page.locator("//button[@aria-label='Close']").click();
 })
 
 test("Navigate to the user module", async({page})=>{
