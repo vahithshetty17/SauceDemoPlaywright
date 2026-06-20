@@ -19,6 +19,7 @@ test("add item to the cart", async({page})=>{
     await expect(page.locator("//div[@class='inventory_item_name']")).toBeVisible();
     await page.locator("//button[@id='checkout']").click();
     await page.locator("//input[@id='first-name']").fill("vahith")
+    await page.locator("//input[@id='last-name']").fill("Shetty");
 })
 
 test("Naviagte to the breadscrumb", async({page})=>{
