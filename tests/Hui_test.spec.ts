@@ -24,7 +24,7 @@ test("Naviagte to the breadscrumb", async({page})=>{
     await page.locator("//button[@id='react-burger-menu-btn']").click();
     await page.locator("(//a[normalize-space()='Logout'])[1]").click();
     console.log("shetty")
-   
+   console.log("vahith")
 
 })
 
