@@ -1,56 +1,32 @@
 import {expect, test} from '@playwright/test'
 
-test.beforeEach("Login to the CRM", async({page})=>{
+test.describe("Sauce demo" ,()=>{
 
-    await page.goto("https://devhui.ptw.com/manager-dashboard");
-    await page.locator("//input[@placeholder='Email']").pressSequentially("vahith.shetty@side.inc",{delay:100})
-    await page.locator("//input[@placeholder='Password']").pressSequentially("vahith.shetty",{delay:100})
-    await page.locator("//button[normalize-space()='LOGIN']").click();
-    const otps =  page.locator("//input[contains(@type,'text')]");
-    for(let i=0; i<await otps.count(); i++)
-    {
-        await otps.nth(i).fill("0");
-    }
+    test.beforeEach("login sauce demo", async({page})=>{
 
-    await page.locator("//button[normalize-space()='verify']").click();
-    await page.locator("//button[@type='button']").click();
-    
-    const loginAs = await  page.locator("//ul[@class='h-auto max-h-35 overflow-y-auto text-white font-12 custom-scroll-gray']//li");
-    for(let i=0; i< await loginAs.count(); i++)
-    {
-        const loginAsText = await loginAs.nth(i).textContent();
-        console.log(loginAsText);
-        if(loginAsText?.trim().toLowerCase()=='admin')
-        {
-            await loginAs.nth(i).click();
-            break;
-        }
-       
-    }
+    await page.goto("https://www.saucedemo.com/");
+    await page.locator("//input[@id='user-name']").fill("standard_user");
+    await page.locator("//input[@id='password']").fill("secret_sauce");
+    await page.locator("//input[@id='login-button']").click();
 
-     await page.locator("//button[normalize-space()='Continue']").click();
-     await page.waitForURL("https://devhui.ptw.com/manager-dashboard");
-     await page.waitForTimeout(2000);
-     await expect(page.locator("//h1[normalize-space()='Dashboard']")).toBeVisible();
-    
 })
 
-test("Navigate to project Module", async({page})=>{
 
-    await page.locator("(//a[text()='Projects'])[2]").click();
-    await page.locator("//button[normalize-space()='+ NEW PROJECT']").click();
-    // await page.waitForTimeout(5000);
-    // await page.locator("//button[@aria-label='Close']").click();
+test("add item to the cart", async({page})=>{
+
+    await page.locator("//button[@id='add-to-cart-sauce-labs-backpack']").click();
+    await page.locator("//a[@class='shopping_cart_link']").click();
+    await expect(page.locator("//div[@class='inventory_item_name']")).toBeVisible();
 })
 
-test("Navigate to the user module", async({page})=>{
+test("Naviagte to the breadscrumb", async({page})=>{
 
-    await page.locator("(//span[contains(text(),'Users')])[2]").click();
-    await page.locator("//a[normalize-space()='Reviewer Users']").click();
-    await page.locator("//button[normalize-space()='Add New User']").click();
-    await page.waitForTimeout(5000)
-    await page.locator("//button[@aria-label='Close']").click();
-    console.log("vahith shetty")
-    console.log("Manju")
+    await page.locator("//button[@id='react-burger-menu-btn']").click();
+    await page.locator("(//a[normalize-space()='Logout'])[1]").click();
+    console.log("I am Happy");
+
+})
+
+
 })
 
