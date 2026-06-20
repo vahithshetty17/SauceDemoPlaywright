@@ -32,7 +32,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     // video: 'retain-on-failure',
     // screenshot: 'only-on-failure',
-    headless: false
+    headless: true
   },
 
   /* Configure projects for major browsers */
@@ -70,12 +70,7 @@ export default defineConfig({
     {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    },
-<<<<<<< HEAD
-=======
-
->>>>>>> main
-  ],
+    },  ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {
